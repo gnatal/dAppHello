@@ -14,6 +14,10 @@ describe("HelloWorld", function () {
     const tx = await helloWorld.updateMessage(newMessage);
     await tx.wait();
 
-    expect(await helloWorld.message()).to.equal(newMessage);
+    const appendedMessage = " Appended this";
+    const tx2 = await helloWorld.appendMessage(appendedMessage);
+    await tx2.wait();
+
+    expect(await helloWorld.message()).to.equal(newMessage + appendedMessage);
   });
 });
